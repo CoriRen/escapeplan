@@ -70,6 +70,7 @@ body{
   }  
   h3{
 	  font-size: 1.5rem;
+	  margin: 1%;
   }  
   h4{
 	  font-size: 1.2rem;
@@ -178,6 +179,11 @@ Modules
 		gap: 2%;
 	}
 
+/*spacers*/
+	.spacer{
+		margin: 2% 0;
+	}
+
 /*image & text boxes*/
 	.imageBox, .textBox, .loginBox{
 		flex-basis: 50%;
@@ -207,7 +213,8 @@ Modules
 		border-radius: 30px;
 		background-color: #f3f4f6;
 		width: 50%;
-		padding: 2%
+		padding: 2%;
+		height: 25vh;
 	}
 
 
@@ -241,14 +248,14 @@ Modules
 		display: inline-block;
 	}
 	input[type=text].appForm{
-		height: 40px;
+		height: 35px;
 		width: 40%;
 	}
 	select.appForm{
 		height: 40px;
 		width: 40%;
 		margin: 10px;
-		padding: 1% 0;
+		font-family: 'source sans 3';
 	}
 
 /*****************************************************************

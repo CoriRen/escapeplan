@@ -24,6 +24,7 @@
                     <li><a href="/login"> Packing List</a></li>
                     <li><a href="/signup"> Itinerary</a></li>
                     <li><a href="/signup"> Budget</a></li>
+                    <a href="/logout">Logout</a> 
                 </ul>
             </nav>
     </header>
@@ -31,65 +32,67 @@
         <div class="hero">
             <h1><%= user.userName %>'s Packing List</h1>
             <p>Create a list of everything you need for your trip! We already put on some essentials for you.</p>
-            <form action="/todos/createTodo" method='POST'>
+            <form action="/todos/createTodo" method='POST' class="flexBox">
                 <input type="text" placeholder="Enter Todo Item" name='todoItem' class="appForm">
-                <select name="placeToPack" class="appForm">
+                <select name="packingList" class="appForm">
                     <option value="null">Where to pack?</option>
                     <option value="Carry-on">Carry-on</option>
-                    <option value="Checked Luggage">Checked Luggage"</option>
+                    <option value="Checked Luggage">Checked Luggage</option>
                     <option value="Personal Bag">Personal Bag</option>
                     <option value="Other">Other</option>
                 </select>
                 <input type="submit">
             </form>
         </div>
+        <div class="spacer"></div>
+        <div class="hero">
+            <h3>There are <strong><%= left %></strong> things left to pack!</h3>
+        </div>
+        <div class="spacer"></div>
         <div class="flexBox twoCol gap2">
             <div class="card">
                 <h3>Carry-On Luggage</h3>
-                <p>There are <strong><%= left %></strong> things left to pack!</p>
                 <ul>
-                    <% todos.forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="checkbox">
+                    <% todos.filter((list)=> list.packingList === "Carry-on").forEach( el => { %>
+                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="completed">
                                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash'></span>
+                                <span class='fa fa-trash del'></span>
                             </li>
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
                 <h3>Checked Luggage</h3>
-                <p><%= user.userName %> has <%= left %> things left to pack.</p>
                 <ul>
-                    <% todos.forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="checkbox">
+                    <% todos.filter((list)=> list.packingList === "Checked Luggage").forEach( el => { %>
+                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="completed">
                                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash'> </span>
+                                <span class='fa fa-trash del'> </span>
                             </li>
                     <% }) %>    
                 </ul>
             </div>
         </div>
+        <div class="spacer"></div>
         <div class="flexBox twoCol gap2">
             <div class="card">
-                <h3>Carry-On Luggage</h3>
-                <p>There are <strong><%= left %></strong> things left to pack!</p>
+                <h3>Personal Bag</h3>
                 <ul>
-                    <% todos.forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="checkbox">
+                    <% todos.filter((list)=> list.packingList === "Personal Bag").forEach( el => { %>
+                            <li class='todoItem' data-id='<%=el._id%>'><input type="checkbox" class="completed">
                                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash'></span>
+                                <span class='fa fa-trash del'></span>
                             </li>
                     <% }) %>    
                 </ul>
             </div>
             <div class="card">
-                <h3>Checked Luggage</h3>
-                <p><%= user.userName %> has <%= left %> things left to pack.</p>
+                <h3>Other</h3>
                 <ul>
-                    <% todos.forEach( el => { %>
+                    <% todos.filter((list)=> list.packingList === "Other").forEach( el => { %>
                             <li class='todoItem' data-id='<%=el._id%>'>
-                                <input type="checkbox" class="checkbox"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                <span class='fa fa-trash'></span>
+                                <input type="checkbox" class="completed"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                                <span class='fa fa-trash del'></span>
                             </li>
                     <% }) %>    
                 </ul>
@@ -97,19 +100,6 @@
         </div>
         
     </section>
-    <section class="innerContainer">
-        <h1>Todos</h1>
-    
-
-        
-    
-        <a href="/logout">Logout</a> 
-        
-        
-            
-    </section>
-    
-
     <script src="js/main.js"></script>
 </body>
 </html>

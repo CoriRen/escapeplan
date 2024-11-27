@@ -9,6 +9,10 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  packingList: {
+    type: String,
+    required: true,
+  },
   userId: {
     type: String,
     required: true
