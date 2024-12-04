@@ -1,5 +1,5 @@
 const deleteBtn = document.querySelectorAll('.del')
-const checkBox = document.querySelectorAll('input.completed')
+const checkBox = document.querySelectorAll('input.check')
 const todoComplete = document.querySelectorAll('span.completed')
 
 Array.from(deleteBtn).forEach((el)=>{

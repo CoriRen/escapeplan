@@ -1,21 +1,20 @@
 const Todo = require('../models/Todo')
 
 module.exports = {
-    getTodos: async (req,res)=>{
+    getBudget: async (req,res)=>{
         console.log(req.user)
         try{
-            const todoItems = await Todo.find({userId:req.user.id})
-            const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
+            const budgetItems = await Budget.find({userId:req.user.id})
+            res.render('budget.ejs', {total: totalBudget, budgetUnder: surplus, budgetOver: defecit, user: req.user})
         }catch(err){
             console.log(err)
         }
     },
-    createTodo: async (req, res)=>{
+    createBudget: async (req, res)=>{
         try{
-            await Todo.create({todo: req.body.todoItem, completed: false, packingList: req.body.packingList, userId: req.user.id})
-            console.log('Todo has been added!')
-            res.redirect('/todos')
+            await Budget.create({todo: req.body.budgetItem, amount: req.body.cost, userId: req.user.id})
+            console.log('Budget Item has been added!')
+            res.redirect('/budget')
         }catch(err){
             console.log(err)
         }
@@ -60,5 +59,5 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    },
+    }
 }    

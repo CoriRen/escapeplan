@@ -129,10 +129,15 @@ body{
 		background-color: #fa6750;
 		border: 1px solid #fa6750;
 	}
+	.borderBottom{
+		border-bottom: 1px solid darkgray;
+		font-weight: 500;
+	}
 	/*Form*/
 	form{
 		font: 1rem 'source sans 3'
 	}
+	
 
 
 /*****************************************************************
@@ -143,6 +148,7 @@ Layout
 	nav{
 		height: 80px;
 	}
+
 
 /*sections*/
 	section{

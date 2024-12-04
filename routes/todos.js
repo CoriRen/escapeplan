@@ -5,6 +5,10 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, todosController.getTodos)
 
+router.get('/budget', todosController.getBudget)
+
+router.get('/itinerary', todosController.getItinerary)
+
 router.post('/createTodo', todosController.createTodo)
 
 router.put('/markComplete', todosController.markComplete)
