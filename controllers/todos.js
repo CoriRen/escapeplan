@@ -51,12 +51,13 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
     getBudget: async (req,res)=>{
         console.log(req.user)
         try{
-            const budgetItems = await Budget.find({userId:req.user.id})
-            res.render('budget.ejs', {total: totalBudget, budgetUnder: surplus, budgetOver: defecit, user: req.user})
+            // const budgetItems = await Budget.find({userId:req.user.id})
+            // res.render('budget.ejs', {total: totalBudget, budgetUnder: surplus, budgetOver: defecit, user: req.user})
+            res.render('budget.ejs')
         }catch(err){
             console.log(err)
         }
